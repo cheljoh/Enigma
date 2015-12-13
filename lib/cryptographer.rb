@@ -2,7 +2,7 @@ require_relative 'cipher'
 require_relative 'offsets'
 
 class Cryptographer
-  attr_reader :message, :date_offset, :key, :a_message_array
+  attr_reader :message, :date, :key, :a_message_array
 
   def initialize(key = rand.to_s[2..6], date = Time.now) #can pass random key or your own
     @message = message
@@ -35,7 +35,7 @@ class Cryptographer
 
   def encrypt(message)
     cipher = Cipher.new
-    @character_array = cipher.characters_to_numbers(message)
+    @character_array = cipher.characters_to_numbers(message.strip)
     group_message_by_letter
     get_final_rotation(1)
     use_cipher_on_final_rotation
