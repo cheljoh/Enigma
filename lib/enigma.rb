@@ -15,7 +15,6 @@ class Enigma
 
 end
 
-enigma = Enigma.new
-output = enigma.encrypt("this is so secret ..end..", 15654, Date.today)
-puts output
-puts enigma.decrypt(output, 15654, Date.today)
+encrypt = Enigma.new
+puts encrypt.encrypt("hellosi", 15654)
+puts encrypt.decrypt("2yc69a.", 15654)

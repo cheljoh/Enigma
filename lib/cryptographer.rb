@@ -1,5 +1,6 @@
 require_relative 'cipher'
 require_relative 'offsets'
+#require_relative 'crack'
 
 class Cryptographer
   attr_reader :message, :date, :key, :a_message_array
@@ -21,8 +22,8 @@ class Cryptographer
   def group_message_by_letter
     reset_message_arrays
     mapper = {0 => @a_message_array, 1 => @b_message_array, 2 => @c_message_array, 3 => @d_message_array}
-    @character_array.each_index do |index|
-        mapper[index % 4] << @character_array[index]
+    @character_list.each_index do |index|
+        mapper[index % 4] << @character_list[index]
     end
   end
 
@@ -35,7 +36,7 @@ class Cryptographer
 
   def encrypt(message)
     cipher = Cipher.new
-    @character_array = cipher.characters_to_numbers(message.strip)
+    @character_list = cipher.characters_to_numbers(message.strip)
     group_message_by_letter
     get_final_rotation(1)
     use_cipher_on_final_rotation
@@ -44,12 +45,20 @@ class Cryptographer
 
   def decrypt(output)
     cipher = Cipher.new
-    @character_array = cipher.characters_to_numbers(output)
+    @character_list = cipher.characters_to_numbers(output) #strip output maybe
     group_message_by_letter
     get_final_rotation(-1)
     use_cipher_on_final_rotation
     encrypted_message.join
   end
+
+  # def crack(output)
+  #   cipher = Cipher.new
+  #   crack_message = Crack.new
+  #   character_list = cipher.characters_to_numbers(output.strip)
+  #   end_list = cipher.characters_to_numbers("nd..")
+  #   crack_message.compare_last_4_characters(character_list, end_list)
+  # end
 
   def get_final_rotation(scale) #add name values and values from date and key
     offsets = Offsets.new(@key, @date, scale)
@@ -102,3 +111,6 @@ end
 #
 # puts encrypted
 # puts decrypted
+
+# enigma = Cryptographer.new
+# enigma.crack("2yc69s2uz76uu")
