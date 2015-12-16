@@ -21,10 +21,11 @@ class Crack
     date_calculation
     init_date_offsets
     key_calculation
+    crack(output)
   end
 
-  def crack(key)
-    crack_message = Cryptographer.new(key)
+  def crack(output)
+    crack_message = Cryptographer.new(@key)
     crack_message.decrypt(output.strip)
   end
 
@@ -47,7 +48,7 @@ class Crack
   def date_calculation
     formatted_date = @date.strftime("%d%m%y").to_i
     string_date = (formatted_date ** 2).to_s
-    @date_offset = string_date[-4..-1]#need string to get last 4, convert back
+    date_offset = string_date[-4..-1]#need string to get last 4, convert back
   end
 
   def init_date_offsets
@@ -63,8 +64,7 @@ class Crack
     key_b = -(@known[1]) + @unknown[1] + @b_offset
     key_c = -(@known[2]) + @unknown[2] + @c_offset
     key_d = -(@known[3]) + @unknown[3] + @d_offset
-    key = [key_a, key_b, key_c, key_d]
-    crack(key)
+    @key = [key_a, key_b, key_c, key_d]
     # require 'pry'
     # binding.pry
   end
@@ -153,7 +153,7 @@ crack = Crack.new
 # crack.crack("2yc6")
 # puts crack.character_list
 # puts crack.rotations
-puts crack.get_key("76uu")
+puts crack.get_key("2yc69s2uz76uu")
 
 #puts crack.last_four_known
 #puts crack.key_a
