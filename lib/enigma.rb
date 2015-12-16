@@ -1,6 +1,6 @@
 require_relative 'cryptographer'
 require_relative 'cracker'
-require 'Date'
+require 'date'
 
 class Enigma
 

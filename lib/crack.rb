@@ -1,5 +1,5 @@
 require_relative 'cracker'
-require 'Date'
+require 'date'
 
 crypt = Crack.new(Date.strptime(ARGV[2], '%d%m%y'))
 encrypted = File.read(ARGV[0])
