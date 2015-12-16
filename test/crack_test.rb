@@ -1,9 +1,11 @@
+require 'simplecov'
+SimpleCov.start
 gem 'minitest', '~> 5.2'
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/cracker'
-require 'simplecov'
-SimpleCov.start
+# require 'simplecov'
+# SimpleCov.start
 
 class CrackTest < Minitest::Test
 
