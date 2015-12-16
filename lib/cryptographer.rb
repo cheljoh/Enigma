@@ -52,14 +52,6 @@ class Cryptographer
     encrypted_message.join
   end
 
-  # def crack(output)
-  #   cipher = Cipher.new
-  #   crack_message = Crack.new
-  #   character_list = cipher.characters_to_numbers(output.strip)
-  #   end_list = cipher.characters_to_numbers("nd..")
-  #   crack_message.compare_last_4_characters(character_list, end_list)
-  # end
-
   def get_final_rotation(scale) #add name values and values from date and key
     offsets = Offsets.new(@key, @date, scale)
     @a_letter_rotation = rotation_calculation(@a_message_array, offsets.a_key_rotation, offsets.a_offset)
@@ -101,7 +93,6 @@ class Cryptographer
     end
     encrypted_message
   end
-
 
 end
 
