@@ -1,7 +1,7 @@
 gem 'minitest', '~> 5.2'
 require 'minitest/autorun'
 require 'minitest/pride'
-require '../lib/cryptographer'
+require_relative '../lib/cryptographer'
 
 class Cryptographer_Test < Minitest::Test
 

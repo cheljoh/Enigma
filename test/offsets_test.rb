@@ -1,7 +1,7 @@
 gem 'minitest', '~> 5.2'
 require 'minitest/autorun'
 require 'minitest/pride'
-require '../lib/offsets'
+require_relative '../lib/offsets'
 
 class OffsetsTest < Minitest::Test
 
