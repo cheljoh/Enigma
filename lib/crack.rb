@@ -1,12 +1,11 @@
-#require_relative 'cryptographer'
+require_relative 'cryptographer'
 require_relative 'cipher'
-require 'date'
 
 class Crack
 
-  attr_reader :rotations, :character_list, :key_a
+  attr_reader :rotations, :new_array
 
-  def initialize (date = Date.today)
+  def initialize (date = Time.now)
     @date = date
   end
 
@@ -16,25 +15,32 @@ class Crack
   def get_key(output)
     cipher = Cipher.new
     character_list = cipher.characters_to_numbers(output.strip)
-    @last_four_unknown = character_list[-4..-1] #what are the letters
-    @last_four_known = [13, 3, 37, 37]
-    order_list(character_list)
-     #need just last four, need a way to figure out the letter of the four
+    last_four_unknown = character_list[-4..-1] #what are the letters
+    last_four_known = [13, 3, 37, 37]
+    order_list(character_list, last_four_known, last_four_unknown)
     date_calculation
     init_date_offsets
     key_calculation
   end
 
-  def order_list(character_list) #use rotation
-    if character_list.length % 4 == 1
-      @last_four_known.rotate
-      @last_four_unknown.rotate
+  def crack(key)
+    crack_message = Cryptographer.new(key)
+    crack_message.decrypt(output.strip)
+  end
+
+  def order_list(character_list, last_four_known, last_four_unknown) #use rotation
+    if character_list.length % 4 == 0
+      @known = last_four_known
+      @unknown =last_four_unknown
+    elsif character_list.length % 4 == 1
+      @known = last_four_known.rotate
+      @unknown =last_four_unknown.rotate
     elsif character_list.length % 4 == 2
-      @last_four_known.rotate(2)
-      @last_four_unknown.rotate(2)
+      @known = last_four_known.rotate(2)
+      @unknown = last_four_unknown.rotate(2)
     elsif character_list.length % 4 == 3
-      @last_four_known.rotate(2)
-      @last_four_unknown.rotate(2)
+      @known = new_array = last_four_known.rotate(3)
+      @unknown = last_four_unknown.rotate(3)
     end
   end
 
@@ -53,11 +59,14 @@ class Crack
   end
 
   def key_calculation
-    @key_a = -@last_four_known[0] + @last_four_unknown[0] + @a_offset
-    key_b = -@last_four_known[1] + @last_four_unknown[1] + @b_offset
-    key_c = -@last_four_known[2] + @last_four_unknown[2] + @c_offset
-    key_d = -@last_four_known[3] + @last_four_unknown[3] + @d_offset
+    key_a = -(@known[0]) + @unknown[0] + @a_offset
+    key_b = -(@known[1]) + @unknown[1] + @b_offset
+    key_c = -(@known[2]) + @unknown[2] + @c_offset
+    key_d = -(@known[3]) + @unknown[3] + @d_offset
     key = [key_a, key_b, key_c, key_d]
+    crack(key)
+    # require 'pry'
+    # binding.pry
   end
 
 end
