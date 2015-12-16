@@ -25,3 +25,5 @@ encrypt = Enigma.new
 puts encrypt.encrypt("hello ..end..", 15654)
 puts encrypt.decrypt("2yc69s2uz76uu", 15654)
 puts encrypt.crack("2yc69s2uz76uu")
+
+#put simple cov in .gitignore folder

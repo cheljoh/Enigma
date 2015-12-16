@@ -2,6 +2,8 @@ gem 'minitest', '~> 5.2'
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/cipher'
+require 'simplecov'
+SimpleCov.start
 
 class CipherTest < Minitest::Test
 

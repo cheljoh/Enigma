@@ -62,7 +62,7 @@ class Cracker
   def date_calculation
     formatted_date = @date.strftime("%d%m%y").to_i
     string_date = (formatted_date ** 2).to_s
-    date_offset = string_date[-4..-1]#need string to get last 4, convert back
+    string_date[-4..-1]
   end
 
   def init_date_offsets
