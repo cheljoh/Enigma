@@ -1,4 +1,5 @@
 require_relative 'cryptographer'
+require_relative 'cracker'
 require 'Date'
 
 class Enigma
@@ -13,8 +14,14 @@ class Enigma
     crypt.decrypt(output)
   end
 
+  def crack(output, date = Time.now)
+    crack_message = Cracker.new(date)
+    crack_message.crack(output)
+  end
+
 end
 
 encrypt = Enigma.new
-puts encrypt.encrypt("hellosi", 15654)
-puts encrypt.decrypt("2yc69a.", 15654)
+# puts encrypt.encrypt("hellosi", 15654)
+# puts encrypt.decrypt("2yc69a.", 15654)
+puts encrypt.crack("2yc69a")
