@@ -22,6 +22,6 @@ class Enigma
 end
 
 encrypt = Enigma.new
-# puts encrypt.encrypt("hellosi", 15654)
-# puts encrypt.decrypt("2yc69a.", 15654)
-puts encrypt.crack("2yc69a")
+puts encrypt.encrypt("hello ..end..", 15654)
+puts encrypt.decrypt("2yc69s2uz76uu", 15654)
+puts encrypt.crack("2yc69s2uz76uu")
