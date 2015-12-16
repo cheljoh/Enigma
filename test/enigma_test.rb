@@ -15,4 +15,9 @@ class EnigmaTest < Minitest::Test
     assert_equal "hello ..end..", enigma.decrypt("2yc69s2uz76uu", 15654, Date.today)
   end
 
+  def test_does_it_crack
+    enigma = Enigma.new
+    assert_equal "hello ..end..", enigma.crack("2yc69s2uz76uu")
+  end
+
 end

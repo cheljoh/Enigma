@@ -1,6 +1,5 @@
 require_relative 'cipher'
 require_relative 'offsets'
-#require_relative 'crack'
 
 class Cryptographer
   attr_reader :message, :date, :key, :a_message_array
