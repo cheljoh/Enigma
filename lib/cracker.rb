@@ -3,7 +3,7 @@ require_relative 'cipher'
 
 class Cracker
 
-  attr_reader :rotations
+  attr_reader :date
 
   def initialize (date = Time.now)
     @date = date
@@ -101,6 +101,3 @@ class Cracker
   end
 
 end
-
-#crack = Cracker.new
-#puts crack.crack("5v4peuejtfujzf01e0wqeiw1zfswjf 2gyq5gy hzo01e3wnql5megrntkri")

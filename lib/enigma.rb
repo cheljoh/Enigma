@@ -21,9 +21,7 @@ class Enigma
 
 end
 
-encrypt = Enigma.new
-puts encrypt.encrypt("hello ..end..", 15654)
-puts encrypt.decrypt("2yc69s2uz76uu", 15654)
-puts encrypt.crack("2yc69s2uz76uu")
-
-#put simple cov in .gitignore folder
+#encrypt = Enigma.new
+#puts encrypt.encrypt("hello ..end..", 00134)
+#puts encrypt.decrypt("2yc69s2uz76uu", 00123) #15654
+#puts encrypt.crack("3inq cbe0rfev")

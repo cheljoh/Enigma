@@ -1,13 +1,15 @@
-require 'simplecov'
+require 'simplecov' #open coverage/index.html, need to run mrspec inside enigma, not test
 SimpleCov.start
 gem 'minitest', '~> 5.2'
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/cracker'
-# require 'simplecov'
-# SimpleCov.start
 
 class CrackTest < Minitest::Test
+
+  def setup
+
+  end
 
   def test_does_it_order_numbers_into_correct_position
     known_phrase = "nd.."
@@ -39,7 +41,8 @@ class CrackTest < Minitest::Test
 
   def test_does_it_crack_the_code
     crack = Cracker.new(Time.now)
-    assert_equal "hello ..end..", crack.crack("2yc69s2uz76uu")
+    output = "2yc69s2uz76uu"
+    assert_equal "hello ..end..", crack.crack(output)
   end
 
 end
