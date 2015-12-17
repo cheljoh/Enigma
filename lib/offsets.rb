@@ -12,7 +12,7 @@ class Offsets
     init_date_offsets(scale)
   end
 
-  def init_key_rotations(scale)#if >5....
+  def init_key_rotations(scale)
     @a_key_rotation = scale * @key[0..1].to_i
     @b_key_rotation = scale * @key[1..2].to_i
     @c_key_rotation = scale * @key[2..3].to_i

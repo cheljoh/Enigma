@@ -47,16 +47,11 @@ class Cracker
     crack_message.decrypt(output)
   end
 
-  def order_list(output, list) #use rotation
-    if output.length % 4 == 0
-       list
-    elsif output.length % 4 == 1
-      list.rotate(3)
-    elsif output.length % 4 == 2
-      list.rotate(2)
-    elsif output.length % 4 == 3
-      list.rotate(1)
-    end
+  def order_list(output, list)
+    rotate_hash = {0 => 0, 1 => 3, 2 => 2, 3 => 1}
+    rotate_value = rotate_hash[output.length % 4]
+    list.rotate(rotate_value)
+
   end
 
   def date_calculation
@@ -83,7 +78,7 @@ class Cracker
 
   def key_candidates(base_key)
     candidates = []
-    for value in base_key
+    base_key.each do |value|
       candidates << sub_key_candidates(value)
     end
     candidates
@@ -92,7 +87,7 @@ class Cracker
   def sub_key_candidates(starting_value)
     candidates = []
     while starting_value < 100
-      if starting_value >= 0
+      if starting_value >= 0 #adds to array only if value is positive 
         candidates <<  "%02d" % starting_value #give 0-9 a leading 0. i.e. 00, 01, 02, 03
       end
       starting_value += 38

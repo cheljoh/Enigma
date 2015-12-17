@@ -1,4 +1,5 @@
 require_relative 'cryptographer'
+require 'date'
 
 crypt = Cryptographer.new
 unencrypted = File.read(ARGV[0])

@@ -94,13 +94,3 @@ class Cryptographer
   end
 
 end
-
-# message = Cryptographer.new(15654, Time.now) #make encrypt method, calls all these methods below
-# encrypted = message.encrypt("hello")
-# decrypted = message.decrypt(encrypted)
-#
-# puts encrypted
-# puts decrypted
-
-# enigma = Cryptographer.new
-# enigma.crack("2yc69s2uz76uu")

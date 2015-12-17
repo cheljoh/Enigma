@@ -1,3 +1,5 @@
+
+
 class Cipher
 
   def cipher

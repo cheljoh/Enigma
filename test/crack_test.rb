@@ -1,4 +1,4 @@
-require 'simplecov' #open coverage/index.html, need to run mrspec inside enigma, not test
+require 'simplecov' #open coverage/index.html, run mrspec inside enigma
 SimpleCov.start
 gem 'minitest', '~> 5.2'
 require 'minitest/autorun'
@@ -6,10 +6,6 @@ require 'minitest/pride'
 require_relative '../lib/cracker'
 
 class CrackTest < Minitest::Test
-
-  def setup
-
-  end
 
   def test_does_it_order_numbers_into_correct_position
     known_phrase = "nd.."
