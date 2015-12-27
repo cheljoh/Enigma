@@ -25,7 +25,7 @@ class Cracker
 
   def test_keys(output, known_phrase, candidates)
     valid_key = ""
-    for a in candidates[0]
+    for a in candidates[0] #could use some enum methods 
       for b in candidates[1]
         for c in candidates[2]
           for d in candidates[3]
@@ -87,7 +87,7 @@ class Cracker
   def sub_key_candidates(starting_value)
     candidates = []
     while starting_value < 100
-      if starting_value >= 0 #adds to array only if value is positive 
+      if starting_value >= 0 #adds to array only if value is positive
         candidates <<  "%02d" % starting_value #give 0-9 a leading 0. i.e. 00, 01, 02, 03
       end
       starting_value += 38

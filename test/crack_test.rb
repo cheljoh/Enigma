@@ -5,6 +5,10 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/cracker'
 
+def date
+  Date.parse("2015-12-18")
+end
+
 class CrackTest < Minitest::Test
 
   def test_does_it_order_numbers_into_correct_position
@@ -36,7 +40,7 @@ class CrackTest < Minitest::Test
   end
 
   def test_does_it_crack_the_code
-    crack = Cracker.new(Time.now)
+    crack = Cracker.new(date)
     output = "2yc69s2uz76uu"
     assert_equal "hello ..end..", crack.crack(output)
   end
